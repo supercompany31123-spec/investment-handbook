@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 蝦蝦反應遊戲</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1a2e;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    user-select: none;
+  }
+  h1 { font-size: 2rem; margin-bottom: 10px; }
+  #score-board {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 30px;
+  }
+  #timer { color: #ff6b6b; }
+  #score { color: #4ecdc4; }
+  #game-area {
+    width: 340px;
+    height: 340px;
+    background: #16213e;
+    border-radius: 16px;
+    position: relative;
+    cursor: crosshair;
+    overflow: hidden;
+    border: 3px solid #0f3460;
+  }
+  .target {
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .target:hover { transform: scale(1.1); }
+  #start-btn {
+    margin-top: 20px;
+    padding: 12px 40px;
+    font-size: 1.2rem;
+    background: #e94560;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  #start-btn:hover { background: #ff6b6b; }
+  #msg { margin-top: 15px; font-size: 1.1rem; color: #aaa; }
+  .hit {
+    animation: pop 0.15s ease-out;
+    background: radial-gradient(circle, #ffe66d 0%, #ff6b6b 100%);
+  }
+  @keyframes pop {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+<h1>🦞 蝦蝦反應遊戲</h1>
+<div id="score-board">
+  <span>⏱️ <span id="timer">20</span>s</span>
+  <span>🎯 <span id="score">0</span> 分</span>
+</div>
+<div id="game-area"></div>
+<button id="start-btn">開始遊戲</button>
+<p id="msg">點擊圈圈得分，20秒內挑戰高分！</p>
+
+<script>
+const area = document.getElementById('game-area');
+const timerEl = document.getElementById('timer');
+const scoreEl = document.getElementById('score');
+const startBtn = document.getElementById('start-btn');
+const msgEl = document.getElementById('msg');
+
+let score = 0, timeLeft = 20, gameActive = false, timerInterval = null;
+let targets = [];
+
+function createTarget() {
+  if (!gameActive) return;
+  clearTarget();
+  const size = 40 + Math.random() * 30;
+  const x = Math.random() * (340 - size);
+  const y = Math.random() * (340 - size);
+  const el = document.createElement('div');
+  el.className = 'target hit';
+  el.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+  el.onclick = (e) => {
+    if (!gameActive) return;
+    e.stopPropagation();
+    score++;
+    scoreEl.textContent = score;
+    el.classList.remove('hit');
+    el.style.background = `radial-gradient(circle, #4ecdc4 0%, #45b7aa 100%)`;
+    setTimeout(() => { if (el.parentNode) el.remove(); }, 150);
+    createTarget();
+  };
+  area.appendChild(el);
+  targets.push(el);
+  setTimeout(() => { if (el.parentNode) { el.remove(); targets = targets.filter(t=>t!==el); } }, 1200);
+}
+
+function clearTarget() {
+  targets.forEach(t => t.remove());
+  targets = [];
+}
+
+function startGame() {
+  score = 0; timeLeft = 20;
+  scoreEl.textContent = '0';
+  timerEl.textContent = '20';
+  gameActive = true;
+  clearTarget();
+  createTarget();
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      gameActive = false;
+      clearTarget();
+      startBtn.textContent = '再玩一次';
+      msgEl.textContent = `遊戲結束！你是豬🐷 得分：${score} 分`;
+    }
+  }, 1000);
+}
+
+startBtn.onclick = startGame;
+</script>
+</body>
+</html>

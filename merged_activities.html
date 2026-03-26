@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動整理 - 信用卡 & 富宇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            min-height: 80vh;
+        }
+        /* 左側分頁籤 */
+        .tabs {
+            width: 200px;
+            background: #2c3e50;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px 0 0 20px;
+        }
+        .tabs h2 {
+            color: white;
+            font-size: 1.1em;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            padding: 15px 20px;
+            color: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            background: none;
+            text-align: left;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .tab-btn:hover {
+            background: #34495e;
+            color: white;
+        }
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        .tab-btn .icon {
+            font-size: 1.3em;
+        }
+        /* 內容區域 */
+        .content-wrapper {
+            flex: 1;
+            display: none;
+            overflow: hidden;
+        }
+        .content-wrapper.active {
+            display: flex;
+        }
+        /* 各自的内容样式 */
+        .content-wrapper.bank .container-inner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .content-wrapper.activities .container-inner {
+            background: linear-gradient(135deg, #9d8854 0%, #6b5a3e 100%);
+        }
+        .container-inner {
+            display: flex;
+            width: 100%;
+            background: white;
+            border-radius: 0 20px 20px 0;
+            overflow: hidden;
+            flex: 1;
+        }
+        /* 側邊篩選器 */
+        .sidebar {
+            width: 220px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #eee;
+        }
+        .sidebar h3 {
+            font-size: 0.95em;
+            color: #333;
+            margin-bottom: 12px;
+            margin-top: 15px;
+        }
+        .sidebar h3:first-child {
+            margin-top: 0;
+        }
+        .filter-group label {
+            display: block;
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #555;
+            font-size: 0.9em;
+        }
+        .filter-group label:hover {
+            background: #e9ecef;
+        }
+        .filter-group input[type="checkbox"] {
+            display: none;
+        }
+        .filter-group label span {
+            display: block;
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            background: white;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        /* 各自主題色 */
+        .bank .filter-group input[type="checkbox"]:checked + span {
+            background: #667eea;
+            color: white;
+        }
+        .activities .filter-group input[type="checkbox"]:checked + span {
+            background: #9d8854;
+            color: white;
+        }
+        /* 下拉選單 */
+        .select-wrapper {
+            margin-bottom: 15px;
+        }
+        .month-select, .status-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+        }
+        .bank .month-select:focus, .bank .status-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .activities .month-select:focus, .activities .status-select:focus {
+            outline: none;
+            border-color: #9d8854;
+        }
+        /* 主要內容 */
+        .main-content {
+            flex: 1;
+            padding: 25px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .header {
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            margin: -25px -25px 20px -25px;
+        }
+        .bank .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .activities .header {
+            background: linear-gradient(135deg, #9d8854 0%, #6b5a3e 100%);
+        }
+        .header h1 {
+            font-size: 1.6em;
+            margin-bottom: 8px;
+        }
+        .header p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        .bank-section, .source-section {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .bank-section:last-child, .source-section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-icon {
+            font-size: 1.2em;
+        }
+        .platform {
+            margin-bottom: 22px;
+        }
+        .platform-name {
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        .bank .platform-name {
+            color: #667eea;
+        }
+        .activities .platform-name {
+            color: #9d8854;
+        }
+        .activity {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-left: 4px solid;
+        }
+        .bank .activity {
+            border-left-color: #667eea;
+        }
+        .activities .activity {
+            border-left-color: #9d8854;
+        }
+        .activity-title {
+            font-weight: bold;
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .activity-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 6px;
+            font-size: 0.85em;
+            color: #555;
+        }
+        .activity-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+        .tag {
+            display: inline-block;
+            color: white;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            margin-right: 4px;
+        }
+        .bank .tag {
+            background: #667eea;
+        }
+        .activities .tag {
+            background: #9d8854;
+        }
+        .tag.open {
+            background: #28a745;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 0.8em;
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .tabs {
+                width: 100%;
+                flex-direction: row;
+                padding: 0;
+                border-radius: 20px 20px 0 0;
+                overflow-x: auto;
+            }
+            .tabs h2 {
+                display: none;
+            }
+            .tab-btn {
+                padding: 12px 15px;
+                white-space: nowrap;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            .activity-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左側分頁籤 -->
+        <div class="tabs">
+            <h2>📋 活動總覽</h2>
+            <button class="tab-btn active" onclick="switchTab('bank')">
+                <span class="icon">💳</span>
+                信用卡活動
+            </button>
+            <button class="tab-btn" onclick="switchTab('activities')">
+                <span class="icon">🏠</span>
+                活動追蹤
+            </button>
+        </div>
+
+        <!-- 信用卡活動內容 -->
+        <div class="content-wrapper bank active" id="content-bank">
+            <div class="container-inner">
+                <!-- 側邊篩選器 -->
+                <div class="sidebar">
+                    <h3>📅 選擇月份</h3>
+                    <div class="select-wrapper">
+                        <select class="month-select" id="monthSelect" onchange="filterByMonth()">
+                            <option value="2026-03" selected>2026年3月（最新）</option>
+                        </select>
+                    </div>
+                    
+                    <h3>🏷️ 篩選電商平台</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="filter-shopee" checked onchange="filterActivities()">
+                            <span>🦐 蝦皮購物</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="filter-momo" checked onchange="filterActivities()">
+                            <span>🛍️ momo購物</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="filter-coupang" checked onchange="filterActivities()">
+                            <span>🚀 酷澎</span>
+                        </label>
+                    </div>
+                    
+                    <h3>🏦 篩選銀行</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="filter-esun" checked onchange="filterActivities()">
+                            <span>🏦 玉山銀行</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="filter-cathay" checked onchange="filterActivities()">
+                            <span>💳 國泰世華</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 主要內容 -->
+                <div class="main-content">
+                    <div class="header">
+                        <h1>💳 信用卡電商活動整理</h1>
+                        <p>玉山銀行 x 國泰世華銀行</p>
+                    </div>
+
+                    <!-- 2026年3月 -->
+                    <div class="month-group" data-month="2026-03">
+                        <div class="bank-section" data-bank="esun">
+                            <div class="section-title">
+                                <span class="section-icon">🏦</span>
+                                玉山銀行
+                            </div>
+
+                            <div class="platform" data-platform="shopee">
+                                <div class="platform-name">🦐 蝦皮購物</div>
+                                <div class="activity">
+                                    <div class="activity-title">活動一：3月全月</div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>5,000元</span>
+                                        <span><span class="label">回饋：</span>300元刷卡金</span>
+                                        <span><span class="label">登錄：</span>3/26 17:00（限量2,000名）</span>
+                                        <span><span class="label">分期：</span>✅ 可</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">活動二：3.3購物節 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/17</span>
+                                        <span><span class="label">門檻：</span>10,000/22,000/33,000元</span>
+                                        <span><span class="label">回饋：</span>800/1,500/2,200點 e point</span>
+                                        <span><span class="label">登錄：</span>3/20 17:00（限量1,500名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">活動四：蝦皮狂購日 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/18-3/31</span>
+                                        <span><span class="label">門檻：</span>13,000/28,000元</span>
+                                        <span><span class="label">回饋：</span>1,000/1,800點 e point</span>
+                                        <span><span class="label">登錄：</span>3/30 17:00（限量1,200名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">活動五：週五玉山日</div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/6、3/13、3/20、3/27</span>
+                                        <span><span class="label">門檻：</span>2,000元</span>
+                                        <span><span class="label">回饋：</span>100點 e point</span>
+                                        <span><span class="label">登錄：</span>3/22 17:00（限量1,500名）</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="platform" data-platform="momo">
+                                <div class="platform-name">🛍️ momo購物</div>
+                                <div class="activity">
+                                    <div class="activity-title">玉山卡全站限時優惠 ⭐新</div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/12</span>
+                                        <span><span class="label">回饋：</span>3% mo幣（上限300）</span>
+                                        <span><span class="label">登錄：</span>3/13 10:00（momo app，限量7,000名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">活動一：女王節 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/12</span>
+                                        <span><span class="label">門檻：</span>8,000/20,000/35,000元</span>
+                                        <span><span class="label">回饋：</span>800/1,500/2,500元</span>
+                                        <span><span class="label">登錄：</span>3/16 17:00（限量1,500名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">活動二：會員日 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/13-3/31</span>
+                                        <span><span class="label">門檻：</span>10,000/24,000元</span>
+                                        <span><span class="label">回饋：</span>700/1,500元</span>
+                                        <span><span class="label">登錄：</span>3/31 17:00（限量1,000名）</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="platform" data-platform="coupang">
+                                <div class="platform-name">🚀 酷澎 Coupang</div>
+                                <div class="activity">
+                                    <div class="activity-title">活動一</div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>2,500/5,000元</span>
+                                        <span><span class="label">回饋：</span>180/700點 e point</span>
+                                        <span><span class="label">登錄：</span>3/23 13:00（限量1,500名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">活動二 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>10,000元（分期3/6/9/12/24期）</span>
+                                        <span><span class="label">回饋：</span>500點 e point</span>
+                                        <span><span class="label">登錄：</span>3/24 13:00（限量1,000名）</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bank-section" data-bank="cathay">
+                            <div class="section-title">
+                                <span class="section-icon">💳</span>
+                                國泰世華銀行
+                            </div>
+
+                            <div class="platform" data-platform="shopee">
+                                <div class="platform-name">🦐 蝦皮購物</div>
+                                <div class="activity">
+                                    <div class="activity-title">蝦皮聯名卡加碼 <span class="tag">限定蝦皮聯名卡</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>6,500/15,000元</span>
+                                        <span><span class="label">回饋：</span>650/1,800蝦幣</span>
+                                        <span><span class="label">登錄：</span>3/24 16:00（限量1,500名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">蝦皮狂購盛典 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>10,000/25,000元</span>
+                                        <span><span class="label">回饋：</span>500/2,000元刷卡金</span>
+                                        <span><span class="label">登錄：</span>3/11 16:00（限量1,000名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">蝦皮購物嘉年華 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>5,000/20,000元</span>
+                                        <span><span class="label">回饋：</span>150/1,200元刷卡金</span>
+                                        <span><span class="label">登錄：</span>3/24 16:00（限量4,000名）</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="platform" data-platform="momo">
+                                <div class="platform-name">🛍️ momo購物</div>
+                                <div class="activity">
+                                    <div class="activity-title">momo女王節 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/10</span>
+                                        <span><span class="label">門檻：</span>15,000/30,000元</span>
+                                        <span><span class="label">回饋：</span>1,000/3,000點小樹點</span>
+                                        <span><span class="label">登錄：</span>3/12 16:00（限量800名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">momo全月刷卡 <span class="tag">需分期</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>5,000/20,000元</span>
+                                        <span><span class="label">回饋：</span>150/1,200點小樹點</span>
+                                        <span><span class="label">登錄：</span>3/25 16:00（限量3,000名）</span>
+                                    </div>
+                                </div>
+                                <div class="activity">
+                                    <div class="activity-title">加碼優惠</div>
+                                    <div class="activity-info">
+                                        <span>輸入序號【J4AA0OIYCRB2】享單品滿990現折200元</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="platform" data-platform="coupang">
+                                <div class="platform-name">🚀 酷澎 Coupang</div>
+                                <div class="activity">
+                                    <div class="activity-title">女王優惠 <span class="tag">需WOW會員</span></div>
+                                    <div class="activity-info">
+                                        <span><span class="label">消費區間：</span>3/1-3/31</span>
+                                        <span><span class="label">門檻：</span>5,000元</span>
+                                        <span><span class="label">回饋：</span>現折500元</span>
+                                        <span><span class="label">限量：</span>10,000名（依交易順序）</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <p>⚠️ 活動內容可能隨時變動，請以官方公告為準</p>
+                        <p>資料更新日期：每月1號</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 富宇活動內容 -->
+        <div class="content-wrapper activities" id="content-activities">
+            <div class="container-inner">
+                <!-- 側邊篩選器 -->
+                <div class="sidebar">
+                    <h3>🏷️ 篩選來源</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="filter-website2" checked onchange="filterActivities2()">
+                            <span>🏠 富宇官網</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 主要內容 -->
+                <div class="main-content">
+                    <div class="header">
+                        <h1>🏠 富宇活動整理</h1>
+                        <p>家族活動 / 課程體驗 / 優惠計畫</p>
+                    </div>
+
+                    <!-- 富宇官網 -->
+                    <div class="source-section" data-source="website">
+                        <div class="section-title">
+                            <span class="section-icon">🏠</span>
+                            富宇官網
+                        </div>
+
+                        <div class="activity" data-source="website">
+                            <div class="activity-title">
+                                🌸 春分如歌・品香漫行｜憨慢生活半日遊
+                            </div>
+                            <div class="activity-info">
+                                <span><span class="label">活動日期：</span>2026年3月28日</span>
+                                <span><span class="label">活動類型：</span>一日遊</span>
+                                <span><span class="label">適合對象：</span>富宇住戶</span>
+                            </div>
+                        </div>
+
+                        <div class="activity" data-source="website">
+                            <div class="activity-title">
+                                🧘 富宇女力｜森流湧動・戶外流動瑜伽
+                            </div>
+                            <div class="activity-info">
+                                <span><span class="label">活動日期：</span>2026年4月18日</span>
+                                <span><span class="label">活動類型：</span>戶外瑜伽</span>
+                                <span><span class="label">適合對象：</span>富宇住戶</span>
+                            </div>
+                        </div>
+
+                        <div class="activity" data-source="website">
+                            <div class="activity-title">
+                                🏠 2026 富宇好家計畫
+                            </div>
+                            <div class="activity-info">
+                                <span><span class="label">開放日期：</span>2026年3月1日起</span>
+                                <span><span class="label">活動類型：</span>優惠計畫</span>
+                                <span><span class="label">適合對象：</span>富宇住戶</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <p>⚠️ 活動內容可能隨時變動，請以官方公告為準</p>
+                        <p>資料更新日期：2026年3月16日</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 切換分頁
+        function switchTab(tabName) {
+            // 更新按鈕狀態
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.tab-btn').classList.add('active');
+
+            // 更新內容顯示
+            document.querySelectorAll('.content-wrapper').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('content-' + tabName).classList.add('active');
+        }
+
+        // 信用卡活動篩選
+        function filterByMonth() {
+            const selectedMonth = document.getElementById('monthSelect').value;
+            
+            document.querySelectorAll('.month-group').forEach(group => {
+                if (group.getAttribute('data-month') === selectedMonth) {
+                    group.classList.remove('hidden');
+                } else {
+                    group.classList.add('hidden');
+                }
+            });
+            
+            filterActivities();
+        }
+        
+        function filterActivities() {
+            const showShopee = document.getElementById('filter-shopee').checked;
+            const showMomo = document.getElementById('filter-momo').checked;
+            const showCoupang = document.getElementById('filter-coupang').checked;
+            const showEsun = document.getElementById('filter-esun').checked;
+            const showCathay = document.getElementById('filter-cathay').checked;
+
+            document.querySelectorAll('#content-bank .platform').forEach(platform => {
+                const platformName = platform.getAttribute('data-platform');
+                if (platformName === 'shopee' && !showShopee) {
+                    platform.classList.add('hidden');
+                } else if (platformName === 'momo' && !showMomo) {
+                    platform.classList.add('hidden');
+                } else if (platformName === 'coupang' && !showCoupang) {
+                    platform.classList.add('hidden');
+                } else {
+                    platform.classList.remove('hidden');
+                }
+            });
+
+            document.querySelectorAll('#content-bank .bank-section').forEach(bank => {
+                const bankName = bank.getAttribute('data-bank');
+                if (bankName === 'esun' && !showEsun) {
+                    bank.classList.add('hidden');
+                } else if (bankName === 'cathay' && !showCathay) {
+                    bank.classList.add('hidden');
+                } else {
+                    bank.classList.remove('hidden');
+                }
+            });
+        }
+
+        // 富宇活動篩選
+        function filterActivities2() {
+            const showWebsite = document.getElementById('filter-website2') ? document.getElementById('filter-website2').checked : true;
+
+            document.querySelectorAll('#content-activities .source-section').forEach(source => {
+                const sourceName = source.getAttribute('data-source');
+                if (sourceName === 'website' && !showWebsite) {
+                    source.classList.add('hidden');
+                } else {
+                    source.classList.remove('hidden');
+                }
+            });
+        }
+        
+        // 初始化
+        filterByMonth();
+    </script>
+</body>
+</html>

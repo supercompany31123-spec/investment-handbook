@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資學習手冊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        h2 {
+            color: #4ecdc4;
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            color: #ff6b6b;
+            margin: 15px 0 10px;
+            font-size: 1.1rem;
+        }
+        
+        .tab-container {
+            margin-bottom: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: #2d2d44;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        
+        .tab:hover {
+            background: #3d3d5c;
+        }
+        
+        .tab.active {
+            background: #4ecdc4;
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+            background: #2d2d44;
+            border-radius: 0 0 12px 12px;
+            padding: 20px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .term-card {
+            background: #252540;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        
+        .term-title {
+            color: #ffd700;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .term-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        
+        .term-example {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .report-date {
+            text-align: center;
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin: 20px 0 15px;
+            padding: 10px;
+            background: #252540;
+            border-radius: 10px;
+        }
+        
+        .report-section {
+            background: #252540;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .report-title {
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .report-content {
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+        
+        .report-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .report-row:last-child {
+            border-bottom: none;
+        }
+        
+        .label {
+            color: #888;
+        }
+        
+        .value {
+            color: #ffd700;
+            font-weight: 500;
+        }
+        
+        .value.up {
+            color: #4ecdc4;
+        }
+        
+        .value.down {
+            color: #ff6b6b;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            background: #252540;
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #4ecdc4;
+        }
+        
+        .search-box::placeholder {
+            color: #666;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: #666;
+            padding: 30px;
+        }
+        
+        .index-list {
+            columns: 2;
+            column-gap: 20px;
+        }
+        
+        .index-list a {
+            color: #4ecdc4;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        .index-list a:hover {
+            color: #ffd700;
+        }
+        
+        @media (max-width: 600px) {
+            .index-list {
+                columns: 1;
+            }
+            
+            .tabs {
+                justify-content: center;
+            }
+            
+            .tab {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 投資學習手冊</h1>
+        
+        <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜尋術語或內容...">
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab active" onclick="openTab('glossary')">📚 術語大全</button>
+                <button class="tab" onclick="openTab('reports')">📰 晨晚報</button>
+            </div>
+            
+            <!-- 術語大全 -->
+            <div id="glossary" class="tab-content active">
+                
+                <h2>一、美股三大指數</h2>
+                <div class="term-card">
+                    <div class="term-title">S&P 500</div>
+                    <div class="term-desc">美國500大企業股價平均指數，代表美國經濟主力</div>
+                    <div class="term-example">→ 美國最大最重要的500家公司，涵蓋各產業</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Nasdaq 那斯達克</div>
+                    <div class="term-desc">以科技股為主的美國指數</div>
+                    <div class="term-example">→ 輝達、蘋果、Google 都是成分股</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Dow Jones 道瓊工業指數</div>
+                    <div class="term-desc">美國30間大型藍籌股</div>
+                    <div class="term-example">→ 的都是有名的大公司</div>
+                </div>
+                
+                <h2>二、VIX 恐慌指數</h2>
+                <div class="term-card">
+                    <div class="term-title">VIX — 投資人預期未來30天市場波動</div>
+                    <div class="term-desc">數字越大 = 市場越恐慌</div>
+                    <div class="term-example">VIX < 20：✅ 淡定 | VIX 20-30：🟡 緊張 | VIX > 30：🔴 恐慌</div>
+                </div>
+                
+                <h2>三、10年美債收益率 (US10Y)</h2>
+                <div class="term-card">
+                    <div class="term-title">US10Y — 所有金融商品的定價基準</div>
+                    <div class="term-desc">美國政府借錢10年的利率</div>
+                    <div class="term-example">↑ 上升 = 經濟好/通膨預期 | ↓ 下降 = 經濟差/降息預期</div>
+                </div>
+                
+                <h2>四、美元指數 (DXY)</h2>
+                <div class="term-card">
+                    <div class="term-title">DXY — 美元強弱的指標</div>
+                    <div class="term-desc">美元漲 = 其他國家錢變相貶值</div>
+                    <div class="term-example">美元漲 = 全世界股市壓力大（記住這個就好）</div>
+                </div>
+                
+                <h2>五、WTI 原油</h2>
+                <div class="term-card">
+                    <div class="term-title">WTI — 國際油價指標</div>
+                    <div class="term-desc">每桶原油多少美元</div>
+                    <div class="term-example">油價 > $100 要小心通膨</div>
+                </div>
+                
+                <h2>六、ADR 台積電ADR</h2>
+                <div class="term-card">
+                    <div class="term-title">ADR — 在外國買本國股票的方式</div>
+                    <div class="term-desc">台積電在美國掛牌交易的股票</div>
+                    <div class="term-example">1 ADR = 5股台積電（用美元買）</div>
+                </div>
+                
+                <h2>七、基本面術語</h2>
+                
+                <h3>估值類</h3>
+                <div class="term-card">
+                    <div class="term-title">P/E 本益比</div>
+                    <div class="term-desc">股價 ÷ EPS = 要幾年才回本</div>
+                    <div class="term-example">P/E 20 = 以現在獲利要20年回本 | <15便宜 | 15-25合理 | >30偏貴</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">P/B 本淨比</div>
+                    <div class="term-desc">股價 ÷ 淨值</div>
+                    <div class="term-example">用來判斷價值股貴不貴</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">EPS 每股盈餘</div>
+                    <div class="term-desc">公司每股賺多少錢</div>
+                    <div class="term-example">EPS 20元 = 每股賺20元</div>
+                </div>
+                
+                <h3>獲利類</h3>
+                <div class="term-card">
+                    <div class="term-title">ROE 股東權益報酬率</div>
+                    <div class="term-desc">公司用自有資金賺錢的效率</div>
+                    <div class="term-example">ROE > 20%：✅ 很會賺 | > 15%：✅ 良好 | < 10%：⚠️ 較弱</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">毛利率</div>
+                    <div class="term-desc">營收扣掉直接成本後的比例</div>
+                    <div class="term-example">毛利率60% = 賣100元商品，直接成本40元</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">營益率</div>
+                    <div class="term-desc">毛利再扣掉管銷費用，真正口袋裡的</div>
+                    <div class="term-example">營益率 > 15% = 體質不錯</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">殖利率</div>
+                    <div class="term-desc">買股票放一年，能拿多少%利息</div>
+                    <div class="term-example">殖利率5% = 比定存好</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">營收年增率</div>
+                    <div class="term-desc">今年 vs 去年同月，成長動能</div>
+                    <div class="term-example">年增20% = 成長動能佳</div>
+                </div>
+                
+                <h2>八、技術分析術語</h2>
+                
+                <div class="term-card">
+                    <div class="term-title">RSI 相對強弱指數</div>
+                    <div class="term-desc">股價相對過去14天的強弱</div>
+                    <div class="term-example">RSI > 70：🔴 超買 | RSI < 30：🟢 超賣 | RSI 50：中性</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">MACD</div>
+                    <div class="term-desc">判斷趨勢方向的指標</div>
+                    <div class="term-example">DIF在Signal線上方 = 上涨趨勢 | DIF在Signal線下方 = 下跌趨勢</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">MA 均線</div>
+                    <div class="term-desc">過去幾天的平均價格</div>
+                    <div class="term-example">MA5=5日線 | MA20=月線 | MA60=季線</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">均線多頭排列</div>
+                    <div class="term-desc">短天期 > 長天期均線</div>
+                    <div class="term-example">5日 > 20日 > 60日 = 上漲趨勢形成</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">均線空頭排列</div>
+                    <div class="term-desc">短天期 < 長天期均線</div>
+                    <div class="term-example">5日 < 20日 < 60日 = 下跌趨勢形成</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">布林通道 (Bollinger Bands)</div>
+                    <div class="term-desc">由均線±2個標準差組成</div>
+                    <div class="term-example">通道變窄(Squeeze) = 大行情可能來臨</div>
+                </div>
+                
+                <h2>九、法人籌碼</h2>
+                <div class="term-card">
+                    <div class="term-title">外資</div>
+                    <div class="term-desc">外國機構投資人</div>
+                    <div class="term-example">通常看長期，金額大</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">投信</div>
+                    <div class="term-desc">台灣境內基金</div>
+                    <div class="term-example">規模較小</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">自營商</div>
+                    <div class="term-desc">券商自己操作</div>
+                    <div class="term-example">短線風向參考</div>
+                </div>
+                
+                <h2>十、量價口诀</h2>
+                <div class="term-card">
+                    <div class="term-title">縮量上漲 = 繼續漲</div>
+                    <div class="term-desc">主力還沒跑，持股穩定</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">縮量下跌 = 繼續跌</div>
+                    <div class="term-desc">沒人承接</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">縮量不漲 = 頭部已現</div>
+                    <div class="term-desc">高檔無量上攻，動能耗盡</div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">放量下跌 = 不一定反彈</div>
+                    <div class="term-desc">有時是起跌訊號（需配合位置判斷）</div>
+                </div>
+                
+            </div>
+            
+            <!-- 晨晚報 -->
+            <div id="reports" class="tab-content">
+                <div id="reportList">
+                    <!-- 動態載入晨晚報內容 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Search functionality
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.term-card');
+            
+            if (searchTerm === '') {
+                cards.forEach(card => card.classList.remove('hidden'));
+                return;
+            }
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Load reports from storage or show placeholder
+        function loadReports() {
+            const reportList = document.getElementById('reportList');
+            
+            // 示範一份晨報範例
+            reportList.innerHTML = `
+                <div class="report-date">📅 晨報範例（每日 08:00 自動推播）</div>
+                
+                <div class="report-section">
+                    <div class="report-title">📊 美股昨日收盤</div>
+                    <div class="report-content">
+                        <div class="report-row"><span class="label">S&P 500</span><span class="value up">+1.15%</span></div>
+                        <div class="report-row"><span class="label">Nasdaq</span><span class="value up">+1.38%</span></div>
+                        <div class="report-row"><span class="label">Dow Jones</span><span class="value up">+1.38%</span></div>
+                    </div>
+                </div>
+                
+                <div class="report-section">
+                    <div class="report-title">💹 個股表現</div>
+                    <div class="report-content">
+                        <div class="report-row"><span class="label">台積電 ADR (TSM)</span><span class="value up">+2.80%</span></div>
+                        <div class="report-row"><span class="label">NVIDIA</span><span class="value up">+1.70%</span></div>
+                        <div class="report-row"><span class="label">Tesla</span><span class="value up">+3.50%</span></div>
+                    </div>
+                </div>
+                
+                <div class="report-section">
+                    <div class="report-title">🔑 關鍵指標</div>
+                    <div class="report-content">
+                        <div class="report-row"><span class="label">VIX 恐慌指數</span><span class="value">26.15 (-2.35%)</span></div>
+                        <div class="report-row"><span class="label">US10Y 美債收益率</span><span class="value">4.33% (-1.30%)</span></div>
+                        <div class="report-row"><span class="label">DXY 美元指數</span><span class="value">99.15 (-0.50%)</span></div>
+                        <div class="report-row"><span class="label">WTI 原油</span><span class="value down">$88.82 (-9.66%)</span></div>
+                    </div>
+                </div>
+                
+                <div class="report-section">
+                    <div class="report-title">📈 基本面資料</div>
+                    <div class="report-content">
+                        <div class="report-row"><span class="label">台積電 P/E</span><span class="value">27.8 ✅ | ROE 35.1%</span></div>
+                        <div class="report-row"><span class="label">旺矽 P/E</span><span class="value">112.3 ⚠️ | ROE 26.6%</span></div>
+                        <div class="report-row"><span class="label">台特化 P/E</span><span class="value">72.2 ⚠️ | ROE 17.8%</span></div>
+                    </div>
+                </div>
+                
+                <div class="report-section">
+                    <div class="report-title">🌐 市場解讀</div>
+                    <div class="report-content">
+                        根據 VIX、DXY、油價等指標綜合判斷市場氛圍，協助中長期投資決策。
+                    </div>
+                </div>
+                
+                <div style="text-align:center; color:#666; margin-top:20px; font-size:0.9rem;">
+                    📝 每日晨報會在早上 8:00 自動推播到 Discord<br>
+                    晚報則在每天收盤後提供
+                </div>
+            `;
+        }
+        
+        loadReports();
+    </script>
+</body>
+</html>

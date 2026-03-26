@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #9d8854 0%, #6b5a3e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+        }
+        /* 側邊篩選器 */
+        .sidebar {
+            width: 240px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #eee;
+        }
+        .sidebar h3 {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 12px;
+            margin-top: 15px;
+        }
+        .sidebar h3:first-child {
+            margin-top: 0;
+        }
+        .filter-group label {
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #555;
+            font-size: 0.95em;
+        }
+        .filter-group label:hover {
+            background: #e9ecef;
+        }
+        .filter-group input[type="checkbox"] {
+            display: none;
+        }
+        .filter-group label span {
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            background: white;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        .filter-group input[type="checkbox"]:checked + span {
+            background: #9d8854;
+            color: white;
+        }
+        /* 下拉選單 */
+        .status-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+            background: white;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .status-select:focus {
+            outline: none;
+            border-color: #9d8854;
+        }
+        /* 主要內容 */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #9d8854 0%, #6b5a3e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+        .source-section {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .source-section:last-child {
+            border-bottom: none;
+        }
+        .source-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .source-icon {
+            font-size: 1.3em;
+        }
+        .activity {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 4px solid #9d8854;
+        }
+        .activity-title {
+            font-weight: bold;
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .activity-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 8px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .activity-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+        .tag {
+            display: inline-block;
+            background: #9d8854;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        .tag.open {
+            background: #28a745;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+        }
+        .hidden {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding: 15px;
+            }
+            .sidebar h3 {
+                font-size: 0.9em;
+                margin-bottom: 8px;
+            }
+            .filter-group label span {
+                padding: 8px 12px;
+                font-size: 0.85em;
+            }
+            .main-content {
+                max-height: none;
+                padding: 20px;
+            }
+            .header {
+                padding: 20px;
+                border-radius: 15px 15px 0 0;
+            }
+            .header h1 {
+                font-size: 1.3em;
+            }
+            .header p {
+                font-size: 0.85em;
+            }
+            .source-title {
+                font-size: 1.2em;
+            }
+            .activity {
+                padding: 15px;
+                margin-bottom: 12px;
+            }
+            .activity-title {
+                font-size: 1em;
+            }
+            .activity-info {
+                grid-template-columns: 1fr;
+                font-size: 0.85em;
+            }
+            .footer {
+                padding: 15px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 側邊篩選器 -->
+        <div class="sidebar">
+            <h3>🏷️ 篩選來源</h3>
+            <div class="filter-group">
+                <label>
+                    <input type="checkbox" id="filter-website" checked onchange="filterActivities()">
+                    <span>🏠 富宇官網</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- 主要內容 -->
+        <div class="main-content">
+            <div class="header">
+                <h1>🏠 活動整理</h1>
+                <p>家族活動 / 課程體驗 / 優惠計畫</p>
+            </div>
+
+            <!-- 富宇官網 -->
+            <div class="source-section" data-source="website">
+                <div class="source-title">
+                    <span class="source-icon">🏠</span>
+                    富宇官網
+                </div>
+
+                <!-- 報名中活動 -->
+                <div class="activity" data-source="website">
+                    <div class="activity-title">
+                        🌸 春分如歌・品香漫行｜憨慢生活半日遊
+                    </div>
+                    <div class="activity-info">
+                        <span><span class="label">活動日期：</span>2026年3月28日</span>
+                        <span><span class="label">活動類型：</span>一日遊</span>
+                        <span><span class="label">適合對象：</span>富宇住戶</span>
+                    </div>
+                </div>
+
+                <div class="activity" data-source="website">
+                    <div class="activity-title">
+                        🧘 富宇女力｜森流湧動・戶外流動瑜伽
+                    </div>
+                    <div class="activity-info">
+                        <span><span class="label">活動日期：</span>2026年4月18日</span>
+                        <span><span class="label">活動類型：</span>戶外瑜伽</span>
+                        <span><span class="label">適合對象：</span>富宇住戶</span>
+                    </div>
+                </div>
+
+                <div class="activity" data-source="website">
+                    <div class="activity-title">
+                        🏠 2026 富宇好家計畫
+                    </div>
+                    <div class="activity-info">
+                        <span><span class="label">開放日期：</span>2026年3月1日起</span>
+                        <span><span class="label">活動類型：</span>優惠計畫</span>
+                        <span><span class="label">適合對象：</span>富宇住戶</span>
+                    </div>
+                </div>
+
+                <!-- 已截止活动已移除 -->
+            </div>
+
+            <div class="footer">
+                <p>⚠️ 活動內容可能隨時變動，請以官方公告為準</p>
+                <p>資料更新日期：2026年3月16日</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterActivities() {
+            const showWebsite = document.getElementById('filter-website') ? document.getElementById('filter-website').checked : true;
+
+            // 篩選來源
+            document.querySelectorAll('.source-section').forEach(source => {
+                const sourceName = source.getAttribute('data-source');
+                if (sourceName === 'website' && !showWebsite) {
+                    source.classList.add('hidden');
+                } else {
+                    source.classList.remove('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
