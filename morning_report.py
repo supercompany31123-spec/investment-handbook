@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # 早盤晨報 - 每日 08:00 自動推播
 
+import os
 import requests
 import yfinance as yf
 import pandas as pd
@@ -17,7 +18,7 @@ FONT_PATH = '/System/Library/Fonts/STHeiti Medium.ttc'
 BG_COLOR = '#1a1a2e'
 font_prop = FontProperties(fname=FONT_PATH)
 
-DISCORD_TOKEN = "MTQ4MTI3NTg2MjYxMDYwODI4NQ.GFMBXg.FbVHlCk4P-dpT_SMR6BUj2UzNN5Ahm_HjTpUVA"
+DISCORD_TOKEN = os.environ.get('DISCORD_BOT_TOKEN', '')
 CHANNEL_ID = "1481483157575569409"
 
 def send_discord(content=None, file_path=None, filename=None):
