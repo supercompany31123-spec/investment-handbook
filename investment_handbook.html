@@ -457,11 +457,23 @@
         });
         
         // Load reports from storage or show placeholder
-        function loadReports() {
+        async function loadReports() {
             const reportList = document.getElementById('reportList');
             
-            // 示範一份晨報範例
-            reportList.innerHTML = `
+            // 嘗試從 GitHub 讀取 JSON 資料
+            let reports = [];
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/supercompany31123-spec/investment-handbook/main/reports_history.json');
+                if (response.ok) {
+                    reports = await response.json();
+                }
+            } catch (e) {
+                console.log('無法讀取 JSON:', e);
+            }
+            
+            // 如果沒有資料，顯示範例
+            if (reports.length === 0) {
+                reportList.innerHTML = `
                 <div class="report-date">📅 晨報範例（每日 08:00 自動推播）</div>
                 
                 <div class="report-section">
@@ -509,10 +521,61 @@
                 </div>
                 
                 <div style="text-align:center; color:#666; margin-top:20px; font-size:0.9rem;">
-                    📝 每日晨報會在早上 8:00 自動推播到 Discord<br>
-                    晚報則在每天收盤後提供
-                </div>
-            `;
+                        📝 每日晨報會在早上 8:00 自動推播到 Discord<br>
+                        晚報則在每天收盤後提供
+                    </div>
+                `;
+                return;
+            }
+            
+            // 顯示實際報告
+            let html = '';
+            reports.forEach(report => {
+                const date = new Date(report.date).toLocaleDateString('zh-TW', {year: 'numeric', month: 'long', day: 'numeric'});
+                
+                const sp500 = report.market?.sp500;
+                const nasdaq = report.market?.nasdaq;
+                const dow = report.market?.dow;
+                const tsm = report.market?.tsm;
+                const nvda = report.market?.nvda;
+                const tsla = report.market?.tsla;
+                const indicators = report.indicators || {};
+                const fundamental = report.fundamental || {};
+                
+                html += `<div class="report-date">📅 ${date}</div>`;
+                
+                if (sp500 || nasdaq || dow) {
+                    html += `<div class="report-section">
+                        <div class="report-title">📊 美股收盤</div>
+                        <div class="report-content">`;
+                    if (sp500) html += `<div class="report-row"><span class="label">S&P 500</span><span class="value ${sp500.pct > 0 ? 'up' : 'down'}">${sp500.pct > 0 ? '▲' : '▼'} ${Math.abs(sp500.pct || 0).toFixed(2)}%</span></div>`;
+                    if (nasdaq) html += `<div class="report-row"><span class="label">Nasdaq</span><span class="value ${nasdaq.pct > 0 ? 'up' : 'down'}">${nasdaq.pct > 0 ? '▲' : '▼'} ${Math.abs(nasdaq.pct || 0).toFixed(2)}%</span></div>`;
+                    if (dow) html += `<div class="report-row"><span class="label">Dow Jones</span><span class="value ${dow.pct > 0 ? 'up' : 'down'}">${dow.pct > 0 ? '▲' : '▼'} ${Math.abs(dow.pct || 0).toFixed(2)}%</span></div>`;
+                    html += `</div></div>`;
+                }
+                
+                if (tsm || nvda || tsla) {
+                    html += `<div class="report-section">
+                        <div class="report-title">💹 個股</div>
+                        <div class="report-content">`;
+                    if (tsm) html += `<div class="report-row"><span class="label">台積電 ADR</span><span class="value ${tsm.pct > 0 ? 'up' : 'down'}">${tsm.pct > 0 ? '▲' : '▼'} ${Math.abs(tsm.pct || 0).toFixed(2)}%</span></div>`;
+                    if (nvda) html += `<div class="report-row"><span class="label">NVIDIA</span><span class="value ${nvda.pct > 0 ? 'up' : 'down'}">${nvda.pct > 0 ? '▲' : '▼'} ${Math.abs(nvda.pct || 0).toFixed(2)}%</span></div>`;
+                    if (tsla) html += `<div class="report-row"><span class="label">Tesla</span><span class="value ${tsla.pct > 0 ? 'up' : 'down'}">${tsla.pct > 0 ? '▲' : '▼'} ${Math.abs(tsla.pct || 0).toFixed(2)}%</span></div>`;
+                    html += `</div></div>`;
+                }
+                
+                if (indicators.VIX || indicators.US10Y) {
+                    html += `<div class="report-section">
+                        <div class="report-title">🔑 關鍵指標</div>
+                        <div class="report-content">`;
+                    if (indicators.VIX) html += `<div class="report-row"><span class="label">VIX</span><span class="value">${indicators.VIX.curr?.toFixed(2)} (${indicators.VIX.pct > 0 ? '▲' : '▼'}${Math.abs(indicators.VIX.pct || 0).toFixed(2)}%)</span></div>`;
+                    if (indicators.US10Y) html += `<div class="report-row"><span class="label">美債殖利率</span><span class="value">${indicators.US10Y.curr?.toFixed(2)}%</span></div>`;
+                    if (indicators.DXY) html += `<div class="report-row"><span class="label">美元指數</span><span class="value">${indicators.DXY.curr?.toFixed(2)}</span></div>`;
+                    html += `</div></div>`;
+                }
+            });
+            
+            reportList.innerHTML = html || '<div class="no-results">尚無報告記錄</div>';
         }
         
         loadReports();
