@@ -96,6 +96,14 @@
             padding: 14px 20px;
             font-size: 16px;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-header .day-info {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: normal;
         }
         .card-header.green {
             background: linear-gradient(135deg, #28a745, #34ce57);
@@ -103,6 +111,37 @@
         .card-header.blue {
             background: linear-gradient(135deg, #0066cc, #0088ff);
         }
+
+        /* Weather Bar */
+        .weather-bar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .weather-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+        .weather-item .icon {
+            font-size: 18px;
+        }
+        .weather-item .value {
+            font-weight: bold;
+        }
+        .wearing {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
         .card-body {
             padding: 20px;
         }
@@ -308,6 +347,28 @@
             margin-bottom: 8px;
         }
 
+        /* Rain Warning */
+        .rain-warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+        .rain-warning .icon {
+            font-size: 24px;
+        }
+        .rain-warning .text {
+            flex: 1;
+        }
+        .rain-warning .text strong {
+            color: #856404;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .main-container {
@@ -327,6 +388,10 @@
             }
             .info-grid {
                 grid-template-columns: 1fr;
+            }
+            .weather-bar {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
@@ -367,6 +432,36 @@
         <div class="card">
             <div class="card-header">
                 📅 Day 1 ｜ 4月4日（六）
+                <span class="day-info">進發日</span>
+            </div>
+            <div class="weather-bar">
+                <div class="weather-item">
+                    <span class="icon">🌧️</span>
+                    <span>降雨機率</span>
+                    <span class="value">100%</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌡️</span>
+                    <span>高溫</span>
+                    <span class="value">25°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌡️</span>
+                    <span>低溫</span>
+                    <span class="value">23°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">⛈️</span>
+                    <span>天氣</span>
+                    <span class="value">雷陣雨</span>
+                </div>
+                <span class="wearing">👗 薄長袖 + 雨具</span>
+            </div>
+            <div class="rain-warning">
+                <span class="icon">⚠️</span>
+                <div class="text">
+                    <strong>注意！</strong>今日降雨機率高達100%，建議攜帶雨具出行
+                </div>
             </div>
             <div class="card-body">
                 <div class="spot-item">
@@ -420,6 +515,30 @@
         <div class="card">
             <div class="card-header green">
                 📅 Day 2 ｜ 4月5日（日）
+                <span class="day-info">深度遊</span>
+            </div>
+            <div class="weather-bar" style="background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);">
+                <div class="weather-item">
+                    <span class="icon">🌧️</span>
+                    <span>降雨機率</span>
+                    <span class="value">86%</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌡️</span>
+                    <span>高溫</span>
+                    <span class="value">27°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌡️</span>
+                    <span>低溫</span>
+                    <span class="value">23°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌦️</span>
+                    <span>天氣</span>
+                    <span class="value">局部陣雨</span>
+                </div>
+                <span class="wearing">👗 短袖 + 薄外套</span>
             </div>
             <div class="card-body">
                 <div class="spot-item">
@@ -495,6 +614,30 @@
         <div class="card">
             <div class="card-header blue">
                 📅 Day 3 ｜ 4月6日（一）
+                <span class="day-info">回程日</span>
+            </div>
+            <div class="weather-bar" style="background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);">
+                <div class="weather-item">
+                    <span class="icon">🌧️</span>
+                    <span>降雨機率</span>
+                    <span class="value">72%</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌡️</span>
+                    <span>高溫</span>
+                    <span class="value">28°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌡️</span>
+                    <span>低溫</span>
+                    <span class="value">17°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="icon">🌦️</span>
+                    <span>天氣</span>
+                    <span class="value">局部陣雨</span>
+                </div>
+                <span class="wearing">👗 短袖 + 外套</span>
             </div>
             <div class="card-body">
                 <div class="spot-item">
@@ -552,6 +695,7 @@
             <div class="card-body">
                 <ul class="info-list">
                     <li>🌞 4月天氣漸熱，記得帶防曬品和足夠水分</li>
+                    <li>🌧️ 三天都有降雨機會，隨身攜帶雨具</li>
                     <li>👟 華山小天梯選好走的步道，注意小孩安全</li>
                     <li>🎭 布袋戲館表演時間可能異動，前往前可先電話確認</li>
                     <li>📸 花季農場花況依季節而異，建議出發前查看花況</li>
@@ -600,6 +744,17 @@
                 <button class="book-btn">📋 複製行程</button>
                 <div class="note-text">※ 價格僅供參考，請以實際預訂為準</div>
             </div>
+        </div>
+
+        <!-- Weather Summary -->
+        <div class="info-card">
+            <h3>📌 天氣總覽</h3>
+            <ul class="info-list">
+                <li>🌧️ <strong>Day 1</strong> - 降雨100%｜25/23°C｜雷陣雨</li>
+                <li>🌦️ <strong>Day 2</strong> - 降雨86%｜27/23°C｜局部陣雨</li>
+                <li>🌦️ <strong>Day 3</strong> - 降雨72%｜28/17°C｜局部陣雨</li>
+            </ul>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">※ 天氣資料取自 Open-Meteo，僅供參考</p>
         </div>
 
         <!-- Info Card -->
