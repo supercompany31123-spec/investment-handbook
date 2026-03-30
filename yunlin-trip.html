@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 雲林輕旅行 3天2夜 | 旅行社行程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a5f1a 0%, #2d8a2d 100%);
+            color: white;
+            padding: 32px 20px;
+            text-align: center;
+        }
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        .header h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .header-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            opacity: 0.95;
+            margin-top: 12px;
+        }
+        .header-info span {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hotel Card */
+        .hotel-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid #2d8a2d;
+        }
+        .hotel-card .label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .hotel-card .name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a5f1a;
+            margin-bottom: 4px;
+        }
+        .hotel-card .nights {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Day Card */
+        .day-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .day-header {
+            background: linear-gradient(135deg, #2d8a2d, #3cb043);
+            color: white;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .day-header .day-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .day-header .day-date {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* Spot */
+        .spot {
+            padding: 20px 24px;
+            border-bottom: 1px solid #eee;
+        }
+        .spot:last-child {
+            border-bottom: none;
+        }
+        .spot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .spot-name {
+            font-size: 17px;
+            font-weight: bold;
+            color: #1a5f1a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .spot-name .emoji {
+            font-size: 22px;
+        }
+        .spot-time {
+            background: #e8f5e9;
+            color: #2d8a2d;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .spot-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .spot-desc {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Tips */
+        .tips-card {
+            background: #fff8e1;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border-left: 5px solid #ff9800;
+        }
+        .tips-card h3 {
+            color: #e65100;
+            font-size: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tips-card ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        .tips-card li {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .tips-card li:before {
+            content: "•";
+            color: #ff9800;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: #999;
+        }
+        .footer-icon {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+        .footer-text {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="header-icon">🌿</div>
+    <h1>雲林輕旅行</h1>
+    <p style="opacity: 0.9; font-size: 15px;">3天2夜 親子小旅行</p>
+    <div class="header-info">
+        <span>👨‍👩‍👧‍👦 2大2小</span>
+        <span>🚗 自行開車</span>
+        <span>🏨 三好國際酒店</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Hotel -->
+    <div class="hotel-card">
+        <div class="label">推薦住宿</div>
+        <div class="name">三好國際酒店</div>
+        <div class="nights">4/4（六）＆ 4/5（日）｜兩晚</div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 Day 1</span>
+            <span class="day-date">4月4日（六）</span>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🍜 斗六在地小吃</span>
+                <span class="spot-time">午餐</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&h=300&fit=crop" alt="美食">
+            <div class="spot-desc">品嚐斗六在地美食小吃，補充體力準備開始旅程</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🌿 古坑綠色隧道</span>
+                <span class="spot-time">下午</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=300&fit=crop" alt="綠色隧道">
+            <div class="spot-desc">漫步於翠綠樹蔭隧道，享受芬多精，附近還有特色咖啡店</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🌸 華山小天梯</span>
+                <span class="spot-time">傍晚</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=600&h=300&fit=crop" alt="山林步道">
+            <div class="spot-desc">輕鬆步道，欣賞山野風光，小孩也能開心走</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🍽️ 劍湖山附近晚餐</span>
+                <span class="spot-time">晚餐</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=300&fit=crop" alt="晚餐">
+            <div class="spot-desc">在劍湖山附近用晚餐，結束充實的一天</div>
+        </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 Day 2</span>
+            <span class="day-date">4月5日（日）</span>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🥪 民宿早午餐</span>
+                <span class="spot-time">早餐</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=600&h=300&fit=crop" alt="早午餐">
+            <div class="spot-desc">悠閒的早餐時光，品嚐在地特色早餐</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🌹 雅聞七里香玫瑰森林</span>
+                <span class="spot-time">上午</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=600&h=300&fit=crop" alt="玫瑰園">
+            <div class="spot-desc">超美玫瑰花牆，媽媽最愛！還有DIY香皂體驗</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🏮 土庫老街</span>
+                <span class="spot-time">午餐</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=600&h=300&fit=crop" alt="老街">
+            <div class="spot-desc">漫遊傳統老街，品嚐勝義雪花粿、當歸鴨等在地美食</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🎭 虎尾布袋戲館</span>
+                <span class="spot-time">下午</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1578321272125-4e4c4e7b826e?w=600&h=300&fit=crop" alt="布袋戲">
+            <div class="spot-desc">認識傳統布袋戲文化，欣賞精彩表演，小朋友可以體驗操控戲偶</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🏭 虎尾糖廠</span>
+                <span class="spot-time">傍晚</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1587736243452-9c8c8cc7d6c5?w=600&h=300&fit=crop" alt="糖廠">
+            <div class="spot-desc">復古糖廠風情，吃冰棒、拍網美照</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🍽️ 斗六晚餐</span>
+                <span class="spot-time">晚餐</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&h=300&fit=crop" alt="晚餐">
+            <div class="spot-desc">鬧區覓食，選擇多樣</div>
+        </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 Day 3</span>
+            <span class="day-date">4月6日（一）</span>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🥪 早午餐</span>
+                <span class="spot-time">早餐</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&h=300&fit=crop" alt="早午餐">
+            <div class="spot-desc">悠閒享用早午餐，收拾行李準備退房</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🌸🌻 花季農場</span>
+                <span class="spot-time">上午</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600&h=300&fit=crop" alt="花季">
+            <div class="spot-desc">賞花拍照、滾草趣，小孩會瘋掉！4月花季正美</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🦐 口湖海鮮</span>
+                <span class="spot-time">午餐</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&h=300&fit=crop" alt="海鮮">
+            <div class="spot-desc">在地海鮮餐廳，品嚐最新鮮的海味</div>
+        </div>
+        
+        <div class="spot">
+            <div class="spot-header">
+                <span class="spot-name">🏠 返家</span>
+                <span class="spot-time">下午</span>
+            </div>
+            <img class="spot-img" src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=300&fit=crop" alt="回家">
+            <div class="spot-desc">帶著美好回憶，返回溫暖的家</div>
+        </div>
+    </div>
+
+    <!-- Tips -->
+    <div class="tips-card">
+        <h3>⚠️ 旅遊小提醒</h3>
+        <ul>
+            <li>🌞 4月天氣漸熱，記得帶防曬品和足夠水分</li>
+            <li>👟 華山小天梯選好走的步道，注意小孩安全</li>
+            <li>🎭 布袋戲館表演時間可能異動，前往前可先電話確認</li>
+            <li>📸 花季農場花況依季節而異，建議出發前查看花況</li>
+            <li>🍽️ 週末部分餐廳可能客滿，建議提早訂位</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div class="footer-icon">🦞</div>
+    <div class="footer-text">蝦蝦精心策劃 ｜ 祝你旅途愉快！</div>
+</div>
+
+</body>
+</html>
