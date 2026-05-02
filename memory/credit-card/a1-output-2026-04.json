@@ -1,0 +1,341 @@
+{
+  "agent": "A1-crawler",
+  "timestamp": "2026-04-11T20:30:00+08:00",
+  "confidence": 0.95,
+  "status": "success",
+  "data": {
+    "activities": [
+      {
+        "bank": "玉山",
+        "campaign_name": "蝦皮購物4月網購活動【獨家活動-蝦皮直營】玉山信用卡現折100元",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "蝦皮直營單筆滿999元，現折100元 (免領券，全月總限量6,000名)。每歸戶限折抵1次，上限100元。",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2100_04",
+        "_raw": {
+          "type": "免登錄現折",
+          "registration_time": null,
+          "threshold": "單筆滿999元",
+          "reward": "現折100元",
+          "limit": "全月總限量6,000名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "蝦皮購物4月網購活動【活動一】4月全月活動",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "單筆滿5,000元享300元刷卡金 (一次付清或分期)。刷玉山Unicard再享4.5%回饋。限量登錄2,000名。登錄時間：4/27 17:00",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2100_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/27 17:00:00~2026/4/30 23:59:00",
+          "threshold": "單筆滿5,000元",
+          "reward": "300元刷卡金",
+          "limit": "限量2,000名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "蝦皮購物4月網購活動【活動二】4.18購物節",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-18",
+        "discount_details": "單筆分期滿12,000元享700點玉山e point；滿25,000元享1,500點。刷玉山Unicard分期再享3.5%。限量登錄1,500名。登錄時間：4/21 17:00",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2100_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/21 17:00:00~2026/4/30 23:59:00",
+          "threshold": "單筆分期滿12,000元/25,000元",
+          "reward": "700點/1,500點玉山e point",
+          "limit": "限量1,500名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "蝦皮購物4月網購活動【活動三】4.18購物節_領券現折",
+        "start_date": "2026-04-18",
+        "end_date": "2026-04-18",
+        "discount_details": "蝦皮商城單筆滿2,000元享88折 (上限1,500元，限量800名)；蝦皮全站單筆滿2,000元享9折 (上限1,500元，限量600名)或95折 (上限2,500元，限量500名)。",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2100_04",
+        "_raw": {
+          "type": "領券現折",
+          "registration_time": null,
+          "threshold": "單筆滿2,000元",
+          "reward": "88折/9折/95折",
+          "limit": "限量"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "蝦皮購物4月網購活動【活動四】蝦皮狂購日",
+        "start_date": "2026-04-19",
+        "end_date": "2026-04-30",
+        "discount_details": "單筆分期滿15,000元享1,000點玉山e point；滿30,000元享2,000點。刷玉山Unicard分期再享3.5%。限量登錄1,500名。登錄時間：4/30 17:00",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2100_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/30 17:00:00~2026/4/30 23:59:00",
+          "threshold": "單筆分期滿15,000元/30,000元",
+          "reward": "1,000點/2,000點玉山e point",
+          "limit": "限量1,500名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "蝦皮購物4月網購活動【活動五】週五玉山日",
+        "start_date": "2026-04-03",
+        "end_date": "2026-04-24",
+        "discount_details": "單筆滿2,000元享100點玉山e point (每週五)。刷玉山Unicard再享4.5%回饋。限量登錄1,500名。",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2100_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": null,
+          "threshold": "單筆滿2,000元",
+          "reward": "100點玉山e point",
+          "limit": "限量1,500名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "momo購物4月網購活動【機車館限定】",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "限定購買機車館商品且單筆分期 (限12期或24期)，滿60,000元以上享6,500元回饋 (5,000元刷卡金＋1,500mo幣)。與其他同月份活動恕無法疊加。登錄時間：4/30 10:00，限量120名。",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2008_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/30 10:00:00",
+          "threshold": "單筆分期滿60,000元 (限12期/24期)",
+          "reward": "6,500元回饋 (5,000元刷卡金+1,500mo幣)",
+          "limit": "限量120名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "momo購物4月網購活動【活動一】全月活動",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "單筆滿6,000元以上享5%刷卡金回饋 (上限500元)。刷玉山Unicard最高享1,370元回饋 (22.8%)。限量登錄3,000名。登錄時間：4/16 17:00 或 4/28 17:00",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2008_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/16 17:00:00~2026/4/30 23:59:00 (限量1,500名) / 2026/4/28 17:00:00~2026/4/30 23:59:00 (限量1,500名)",
+          "threshold": "單筆滿6,000元",
+          "reward": "5%刷卡金 (上限500元)",
+          "limit": "限量3,000名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "momo購物4月網購活動【活動二】同樂購物節",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-14",
+        "discount_details": "單筆分期滿15,000元享1,000點玉山e point；滿30,000元享2,000點。刷玉山Unicard分期最高享4,350元回饋。限量登錄1,500名。登錄時間：4/17 17:00",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2008_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/17 17:00:00~2026/4/30 23:59:00",
+          "threshold": "單筆分期滿15,000元/30,000元",
+          "reward": "1,000點/2,000點玉山e point",
+          "limit": "限量1,500名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "momo購物4月網購活動【活動三】桃金日",
+        "start_date": "2026-04-15",
+        "end_date": "2026-04-30",
+        "discount_details": "單筆分期滿12,000元享600點玉山e point；滿24,000元享1,500點。刷玉山Unicard分期最高享3,640元回饋。限量登錄1,200名。登錄時間：4/29 17:00",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2008_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/29 17:00:00~2026/4/30 23:59:00",
+          "threshold": "單筆分期滿12,000元/24,000元",
+          "reward": "600點/1,500點玉山e point",
+          "limit": "限量1,200名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "酷澎Coupang 4月網購活動【限量開搶】iPhone 17e現折1,500元",
+        "start_date": "2026-04-02",
+        "end_date": "2026-04-30",
+        "discount_details": "於酷澎刷玉山信用卡購買Apple iPhone 17e享現折1,500元。限量優惠，每會員帳號限抵用1次。",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2028_04",
+        "_raw": {
+          "type": "限量開搶",
+          "registration_time": null,
+          "threshold": "購買iPhone 17e",
+          "reward": "現折1,500元",
+          "limit": "每會員帳號限1次"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "酷澎Coupang 4月網購活動【活動一】指定3C商品現折1,100元",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "於酷澎刷玉山信用卡購買指定3C商品，單筆滿20,000元享現折1,100元。限WOW會員，每會員帳號限1次。",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2028_04",
+        "_raw": {
+          "type": "限量開搶",
+          "registration_time": null,
+          "threshold": "單筆滿20,000元 (指定3C商品)",
+          "reward": "現折1,100元",
+          "limit": "每會員帳號限1次"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "酷澎Coupang 4月網購活動【活動二】全月活動",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "累積消費滿2,500元享100點玉山e point；滿5,000元享250點。限量登錄1,500名。登錄時間：4/25 13:00",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2028_04",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/25 13:00:00~2026/4/30 23:59:00",
+          "threshold": "累積消費滿2,500元/5,000元",
+          "reward": "100點/250點玉山e point",
+          "limit": "限量1,500名"
+        }
+      },
+      {
+        "bank": "玉山",
+        "campaign_name": "酷澎Coupang 4月網購活動【活動三】WOW會員專屬奶粉現折80元",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "於酷澎刷玉山信用卡購買奶粉類商品，單筆滿2,000元享現折80元。每週一00:00發放優惠券，每週每會員帳號限抵用1次。",
+        "source_url": "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2028_04",
+        "_raw": {
+          "type": "領券現折",
+          "registration_time": null,
+          "threshold": "單筆滿2,000元 (奶粉商品)",
+          "reward": "現折80元",
+          "limit": "每週每會員帳號限1次"
+        }
+      },
+      {
+        "bank": "國泰世華",
+        "campaign_name": "蝦皮購物4月購物嘉年華",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "單筆消費(含一次付清及分期)滿5,000元贈150元刷卡金或小樹點；單筆分期(限3、6、24期)滿20,000元贈1,200元刷卡金或小樹點。限量登錄4,000名。登錄時間：4/27 16:00",
+        "source_url": "https://www.cathay-cube.com.tw/content/cub-aem-cs/zh-tw/cathaybk/personal/event/overview/credit-card/online-shopping/202604/shopee202604_1.html",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/04/27 16:00至04/30 23:59",
+          "threshold": "單筆滿5,000元 / 單筆分期滿20,000元",
+          "reward": "150元/1,200元刷卡金或等值小樹點",
+          "limit": "限量4,000名"
+        }
+      },
+      {
+        "bank": "國泰世華",
+        "campaign_name": "蝦皮購物 4月狂購盛典",
+        "start_date": "2026-04-05",
+        "end_date": "2026-04-18",
+        "discount_details": "單筆消費(含一次付清及分期)滿10,000元贈500元刷卡金或小樹點；單筆分期滿25,000元贈2,000元刷卡金或小樹點。與聯名卡活動限擇優回饋。限量登錄1,000名。登錄時間：4/21 16:00",
+        "source_url": "https://www.cathay-cube.com.tw/content/cub-aem-cs/zh-tw/cathaybk/personal/event/overview/credit-card/online-shopping/202604/shopee202604_2.html",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/04/21 16:00至04/30 23:59",
+          "threshold": "單筆滿10,000元 / 單筆分期滿25,000元",
+          "reward": "500元/2,000元刷卡金或等值小樹點",
+          "limit": "限量1,000名"
+        }
+      },
+      {
+        "bank": "國泰世華",
+        "campaign_name": "蝦皮購物聯名卡加碼",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "蝦皮購物聯名卡消費滿額再享額外蝦幣回饋。與其他同月份活動限擇優回饋乙次。",
+        "source_url": "https://www.cathay-cube.com.tw/cathaybk/personal/event/overview/credit-card/online-shopping/202410/sp-permonth.html",
+        "_raw": {
+          "type": "需登錄/聯名卡專屬",
+          "registration_time": null,
+          "threshold": "滿額",
+          "reward": "額外蝦幣",
+          "limit": null
+        }
+      },
+      {
+        "bank": "國泰世華",
+        "campaign_name": "momo購物網 刷卡優惠",
+        "start_date": "2026-04-01",
+        "end_date": "2026-04-30",
+        "discount_details": "單筆消費(含一次付清及分期)滿5,000元贈100點小樹點；單筆分期付款滿20,000元贈1,000點小樹點。限量登錄4,000名。登錄時間：4/24 16:00",
+        "source_url": "https://www.cathay-cube.com.tw/content/cub-aem-cs/zh-tw/cathaybk/personal/event/overview/credit-card/online-shopping/202604/momo202604_1.html",
+        "_raw": {
+          "type": "需登錄",
+          "registration_time": "2026/4/24 16:00至2026/4/30 23:59",
+          "threshold": "單筆滿5,000元 / 單筆分期滿20,000元",
+          "reward": "100點/1,000點小樹點(信用卡)",
+          "limit": "限量4,000名"
+        }
+      },
+      {
+        "bank": "國泰世華",
+        "campaign_name": "蝦皮購物促刷檔期再加碼6%蝦幣",
+        "start_date": "2026-01-01",
+        "end_date": "2026-06-30",
+        "discount_details": "蝦皮購物促刷檔期再加碼6%蝦幣 (長期活動)。需刷蝦皮聯名卡。",
+        "source_url": "https://www.cathay-cube.com.tw/cathaybk/personal/event/overview/credit-card/online-shopping/202411/sp-campaign.html",
+        "_raw": {
+          "type": "長期活動",
+          "registration_time": null,
+          "threshold": null,
+          "reward": "6%蝦幣加碼",
+          "limit": null
+        }
+      },
+      {
+        "bank": "國泰世華",
+        "campaign_name": "蝦皮卡指定外送、交通、旅遊最高7%",
+        "start_date": "2026-01-01",
+        "end_date": "2026-06-30",
+        "discount_details": "於指定外送、交通、旅遊通路刷蝦皮卡不限消費金額最高7%回饋 (長期活動)。",
+        "source_url": "https://www.cathay-cube.com.tw/cathaybk/personal/event/overview/credit-card/online-shopping/202506/sp-travel.html",
+        "_raw": {
+          "type": "長期活動",
+          "registration_time": null,
+          "threshold": null,
+          "reward": "最高7%回饋",
+          "limit": null
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "total_activities_found": 20,
+    "source_urls_crawled": [
+      "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shops/all?category=onlineshop&keyword=蝦皮%7Cmomo%7C酷澎",
+      "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2100_04",
+      "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2008_04",
+      "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=2028_04",
+      "https://www.esunbank.com/zh-tw/personal/credit-card/discount/shopInfo?sno=unicard",
+      "https://www.cathay-cube.com.tw/cathaybk/personal/event/overview#keyword=蝦皮,momo,酷澎",
+      "https://www.cathay-cube.com.tw/content/cub-aem-cs/zh-tw/cathaybk/personal/event/overview/credit-card/online-shopping/202604/shopee202604_1.html",
+      "https://www.cathay-cube.com.tw/content/cub-aem-cs/zh-tw/cathaybk/personal/event/overview/credit-card/online-shopping/202604/shopee202604_2.html",
+      "https://www.cathay-cube.com.tw/content/cub-aem-cs/zh-tw/cathaybk/personal/event/overview/credit-card/online-shopping/202604/momo202604_1.html"
+    ],
+    "crawl_duration_seconds": 300
+  },
+  "flagged_items": [
+    {
+      "field": "玉山Unicard新申辦加碼",
+      "issue": "多個活動有Unicard疊加試算，但視為參考而非默認",
+      "raw_value": "26.5% / 22.8% 等"
+    },
+    {
+      "field": "國泰世華酷澎活動",
+      "issue": "列表頁無任何酷澎活動，可能是網站未收錄或關鍵字過濾問題",
+      "raw_value": "關鍵字篩選結果為空"
+    }
+  ],
+  "issues": [
+    "國泰世華4月無酷澎相關活動"
+  ],
+  "retry_count": 0
+}
