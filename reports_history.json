@@ -1,5 +1,200 @@
 [
   {
+    "date": "2026-07-23 20:02",
+    "type": "evening",
+    "technical": {
+      "2330.TW": {
+        "name": "台積電",
+        "current": 2405.0,
+        "ma5": 2365.0,
+        "ma10": 2401.0,
+        "ma20": 2416.25,
+        "ma60": 2339.97,
+        "rsi": 46.15,
+        "rsi_status": "中性",
+        "macd": 6.8,
+        "macd_status": "多方",
+        "vol_ratio": 0.81,
+        "vol_status": "正常",
+        "ma_trend": "空頭排列",
+        "trend": "空頭",
+        "low_20": 2290.0,
+        "low_60": 2129.32,
+        "high_20": 2505.0
+      },
+      "6223.TWO": {
+        "name": "旺矽",
+        "current": 6250.0,
+        "ma5": 5836.0,
+        "ma10": 6179.0,
+        "ma20": 6413.6,
+        "ma60": 6039.87,
+        "rsi": 37.09,
+        "rsi_status": "中性",
+        "macd": -81.56,
+        "macd_status": "空方",
+        "vol_ratio": 0.83,
+        "vol_status": "正常",
+        "ma_trend": "空頭排列",
+        "trend": "空頭",
+        "low_20": 5145.0,
+        "low_60": 4693.96,
+        "high_20": 7673.78
+      },
+      "4772.TWO": {
+        "name": "台特化",
+        "current": 242.5,
+        "ma5": 241.7,
+        "ma10": 254.7,
+        "ma20": 262.81,
+        "ma60": 282.45,
+        "rsi": 25.83,
+        "rsi_status": "超賣",
+        "macd": -9.71,
+        "macd_status": "空方",
+        "vol_ratio": 0.53,
+        "vol_status": "縮量",
+        "ma_trend": "空頭排列",
+        "trend": "空頭",
+        "low_20": 228.0,
+        "low_60": 228.0,
+        "high_20": 288.41
+      }
+    },
+    "institutional": {
+      "2330.TW": {
+        "name": "台積電",
+        "foreign_buy": 10889,
+        "foreign_sell": 15504,
+        "foreign_net": -4614,
+        "investment_net": -943,
+        "dealer_net": 38,
+        "total_net": -5519,
+        "history_3day": -3177,
+        "history": [
+          {
+            "date": "2026/07/23",
+            "foreign": -4614
+          },
+          {
+            "date": "2026/07/22",
+            "foreign": -3539
+          },
+          {
+            "date": "2026/07/21",
+            "foreign": 4976
+          }
+        ]
+      },
+      "6223.TWO": {
+        "name": "旺矽",
+        "foreign_buy": 245,
+        "foreign_sell": 304,
+        "foreign_net": -59,
+        "investment_net": 65,
+        "dealer_net": -8,
+        "total_net": -2,
+        "history_3day": -678,
+        "history": [
+          {
+            "date": "2026/07/23",
+            "foreign": -59
+          },
+          {
+            "date": "2026/07/22",
+            "foreign": -200
+          },
+          {
+            "date": "2026/07/21",
+            "foreign": -419
+          }
+        ]
+      },
+      "4772.TWO": {
+        "name": "台特化",
+        "foreign_buy": 134,
+        "foreign_sell": 87,
+        "foreign_net": 47,
+        "investment_net": 43,
+        "dealer_net": -4,
+        "total_net": 86,
+        "history_3day": 154,
+        "history": [
+          {
+            "date": "2026/07/23",
+            "foreign": 47
+          },
+          {
+            "date": "2026/07/22",
+            "foreign": 33
+          },
+          {
+            "date": "2026/07/21",
+            "foreign": 74
+          }
+        ]
+      }
+    },
+    "news_themes": [
+      {
+        "theme": "地緣政治/中東",
+        "news_count": 1,
+        "summary": "",
+        "impacts": [
+          "影響市場風險情緒",
+          "若中東衝突緩解，風險資產可能反彈",
+          "若衝突升級，原物料/能源股可能受惠"
+        ],
+        "key_news": [
+          "常廣海外市場多點開花 看好全年營收突破高峰"
+        ]
+      },
+      {
+        "theme": "半導體/科技",
+        "news_count": 2,
+        "summary": "",
+        "impacts": [
+          "AI/半導體需求趨勢，持續關注",
+          "若與台積電相關，影響供應鏈"
+        ],
+        "key_news": [
+          "〈財報〉AI利多難救！意法半導體Q3財測失色 盤前股價崩逾14%",
+          "迎戰AI綠電荒！經部推離岸風電中長程計畫 力拚2039年達27.9GW容量"
+        ]
+      },
+      {
+        "theme": "其他",
+        "news_count": 13,
+        "summary": "",
+        "impacts": [
+          "需持續觀察後續發展"
+        ],
+        "key_news": [
+          "三大法人齊力買超164億元 外資掃貨緯創7.9萬張、大買台塑三寶",
+          "〈電玩電競產業展〉宇峻下半年新作連發 營運可望逐季升溫"
+        ]
+      }
+    ],
+    "summary": {
+      "台積電": {
+        "advice": "觀望，嚴守停損",
+        "RSI": 46.2,
+        "trend": "空頭"
+      },
+      "旺矽": {
+        "advice": "不追高，注意高位風險",
+        "RSI": 37.1,
+        "trend": "空頭"
+      },
+      "台特化": {
+        "advice": "減碼，留意報價波動",
+        "RSI": 25.8,
+        "trend": "空頭"
+      },
+      "market_mood": "地緣政治風險"
+    }
+  },
+  {
     "date": "2026-07-23 08:01",
     "type": "morning",
     "market": {
@@ -4744,212 +4939,5 @@
         "summary": "經濟部於今 (2) 日召開離岸風電產業溝通平台會議，攜手台灣離岸風電產業協會共同研商風場推動議題 。本次會議重點針對區塊開發第三期選商機制及"
       }
     ]
-  },
-  {
-    "date": "2026-07-02 20:00",
-    "type": "evening",
-    "technical": {
-      "2330.TW": {
-        "name": "台積電",
-        "current": 2465.0,
-        "ma5": 2418.0,
-        "ma10": 2428.0,
-        "ma20": 2378.71,
-        "ma60": 2251.59,
-        "rsi": 66.17,
-        "rsi_status": "中性",
-        "macd": 46.78,
-        "macd_status": "多方",
-        "vol_ratio": 0.84,
-        "vol_status": "正常",
-        "ma_trend": "整理中",
-        "trend": "多頭",
-        "low_20": 2210.0,
-        "low_60": 1919.88,
-        "high_20": 2535.0
-      },
-      "6223.TWO": {
-        "name": "旺矽",
-        "current": 7255.0,
-        "ma5": 6520.0,
-        "ma10": 6620.0,
-        "ma20": 6354.0,
-        "ma60": 5647.33,
-        "rsi": 66.39,
-        "rsi_status": "中性",
-        "macd": 272.0,
-        "macd_status": "多方",
-        "vol_ratio": 1.52,
-        "vol_status": "放量",
-        "ma_trend": "整理中",
-        "trend": "多頭",
-        "low_20": 5190.0,
-        "low_60": 4135.0,
-        "high_20": 7360.0
-      },
-      "4772.TWO": {
-        "name": "台特化",
-        "current": 276.0,
-        "ma5": 270.1,
-        "ma10": 273.15,
-        "ma20": 276.9,
-        "ma60": 296.32,
-        "rsi": 58.93,
-        "rsi_status": "中性",
-        "macd": -6.61,
-        "macd_status": "空方",
-        "vol_ratio": 0.41,
-        "vol_status": "縮量",
-        "ma_trend": "空頭排列",
-        "trend": "空頭",
-        "low_20": 260.0,
-        "low_60": 260.0,
-        "high_20": 308.5
-      }
-    },
-    "institutional": {
-      "2330.TW": {
-        "name": "台積電",
-        "foreign_buy": 10561,
-        "foreign_sell": 22815,
-        "foreign_net": -12254,
-        "investment_net": 1026,
-        "dealer_net": 217,
-        "total_net": -11011,
-        "history_3day": -6280,
-        "history": [
-          {
-            "date": "2026/07/02",
-            "foreign": -12254
-          },
-          {
-            "date": "2026/07/01",
-            "foreign": 7400
-          },
-          {
-            "date": "2026/06/30",
-            "foreign": -1426
-          }
-        ]
-      },
-      "6223.TWO": {
-        "name": "旺矽",
-        "foreign_buy": 749,
-        "foreign_sell": 659,
-        "foreign_net": 90,
-        "investment_net": 203,
-        "dealer_net": -10,
-        "total_net": 283,
-        "history_3day": 154,
-        "history": [
-          {
-            "date": "2026/07/02",
-            "foreign": 90
-          },
-          {
-            "date": "2026/07/01",
-            "foreign": 206
-          },
-          {
-            "date": "2026/06/30",
-            "foreign": -142
-          }
-        ]
-      },
-      "4772.TWO": {
-        "name": "台特化",
-        "foreign_buy": 79,
-        "foreign_sell": 71,
-        "foreign_net": 8,
-        "investment_net": 0,
-        "dealer_net": 8,
-        "total_net": 16,
-        "history_3day": 218,
-        "history": [
-          {
-            "date": "2026/07/02",
-            "foreign": 8
-          },
-          {
-            "date": "2026/07/01",
-            "foreign": 153
-          },
-          {
-            "date": "2026/06/30",
-            "foreign": 57
-          }
-        ]
-      }
-    },
-    "news_themes": [
-      {
-        "theme": "地緣政治/中東",
-        "news_count": 1,
-        "summary": "",
-        "impacts": [
-          "影響市場風險情緒",
-          "若中東衝突緩解，風險資產可能反彈",
-          "若衝突升級，原物料/能源股可能受惠"
-        ],
-        "key_news": [
-          "荷姆茲海峽流量回升與美伊外交進展 國際油價連續3日走跌"
-        ]
-      },
-      {
-        "theme": "半導體/科技",
-        "news_count": 2,
-        "summary": "",
-        "impacts": [
-          "AI/半導體需求趨勢，持續關注",
-          "若與台積電相關，影響供應鏈"
-        ],
-        "key_news": [
-          "AI浪潮疊加能源衝擊！富達劉培乾：全球告別低利、低通膨 資金瘋湧亞洲「這兩國」",
-          "〈野村台股展望〉AI「真金白銀」破除泡沫！供應鏈需求已擴大至關鍵零組件 傳產看好世足熱"
-        ]
-      },
-      {
-        "theme": "台灣宏觀",
-        "news_count": 1,
-        "summary": "",
-        "impacts": [
-          "利率政策影響資金流向",
-          "台股基本面持續觀察"
-        ],
-        "key_news": [
-          "日元跌跌不休？渣打看日元會回到155 黃金一年內上看5100"
-        ]
-      },
-      {
-        "theme": "其他",
-        "news_count": 12,
-        "summary": "",
-        "impacts": [
-          "需持續觀察後續發展"
-        ],
-        "key_news": [
-          "中美推動農業貿易休戰 達成互惠減稅共識與擴大採購目標",
-          "泰宗泌尿道感染新藥授權予美國子公司 可獲授權金7.5億美元"
-        ]
-      }
-    ],
-    "summary": {
-      "台積電": {
-        "advice": "觀望，嚴守停損",
-        "RSI": 66.2,
-        "trend": "多頭"
-      },
-      "旺矽": {
-        "advice": "不追高，注意高位風險",
-        "RSI": 66.4,
-        "trend": "多頭"
-      },
-      "台特化": {
-        "advice": "減碼，留意報價波動",
-        "RSI": 58.9,
-        "trend": "空頭"
-      },
-      "market_mood": "地緣政治風險"
-    }
   }
 ]
